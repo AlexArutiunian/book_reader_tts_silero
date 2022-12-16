@@ -1,4 +1,4 @@
-
+import os
 i_max = 6
 def unmerge_(outfile):
     out = open(outfile, 'w', encoding="utf-8")    
@@ -11,14 +11,15 @@ def unmerge_(outfile):
         else:
             out.write(line) 
 
-filename = 'merge_20ch.txt'
+filename = 'src/merge_20ch.txt'
 file = open(filename, 'r', encoding="utf-8")
 i = 1
 while i != i_max + 1:
     j = 1
     while j != 4:
-        outfile = f'gen_audio/text/text{i}_{j}.txt'
-        unmerge_(outfile)                  
+        outfile = f'src/gen_audio/text/text{i}_{j}.txt'
+        outfile = os.path.abspath(outfile)
+        unmerge_(outfile)
         j += 1
     i += 1                
      

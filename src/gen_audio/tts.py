@@ -32,19 +32,16 @@ j = 1
 while i != 5:
     j = 1
     while j != 4:
-        path = f"sounds/{i}_{j}.wav"
-        print(f"sounds/{i}_{j}")
-        TTS(f'text/text{i}_{j}.txt', model)
+        path = rf"src/gen_audio/sounds/{i}_{j}.wav"
+        path = os.path.abspath(path)
+        print(path)
+        TTS(os.path.abspath(rf'src/gen_audio/text/text{i}_{j}.txt'), model)
         j += 1                                
     i += 1
 
 i = 5
 j = 1    
-path = f"sounds/{i}_{j}.wav"
-print(f"sounds/{i}_{j}")
-TTS(f'text/text{i}_{j}.txt', model)
-
-j = 2
-path = f"sounds/{i}_{j}.wav"
-print(f"sounds/{i}_{j}")
-TTS(f'text/text{i}_{j}.txt', model)
+path = rf"src/gen_audio/sounds/{i}_{j}.wav"
+path = os.path.abspath(path)
+print(path)
+TTS(os.path.abspath(rf'src/gen_audio/text/text{i}_{j}.txt'), model)

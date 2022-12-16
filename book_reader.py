@@ -18,16 +18,16 @@ def delete_bad_sym(fname):
 def lower_sym(fname):
     lst1 = []
     lst2 = [] 
-    dump_strfile_in_lst('src\\helpers\\alpA.txt', lst1)
-    dump_strfile_in_lst('src\\helpers\\alp.txt', lst2)         
+    dump_strfile_in_lst('src/helpers/alpA.txt', lst1)
+    dump_strfile_in_lst('src/helpers/alp.txt', lst2)         
     for elem1, elem2 in zip(lst1, lst2):        
         replace_word(fname, f"{elem1}", f"{elem2}")                
 
 def add_plus_and_textnum(fname):
     lst1 = []
     lst2 = []
-    dump_strfile_in_lst('src\\helpers\\word.txt', lst1)
-    dump_strfile_in_lst('src\\helpers\\word+.txt', lst2)               
+    dump_strfile_in_lst('src/helpers/word.txt', lst1)
+    dump_strfile_in_lst('src/helpers/word+.txt', lst2)               
     for elem1, elem2 in zip(lst1, lst2):
         replace_word(fname, f" {elem1} ", f" {elem2} ") 
 
@@ -49,7 +49,7 @@ def parts_(sourcefile, path_outfiles, i_max, j_max):
     f = open(f"{sourcefile}", "r", encoding="utf-8") 
     for i in range(i_max):
         for j in range(j_max):
-            res = open(rf'{path_outfiles}\\text{i + 1}_{j + 1}.txt', "w", encoding="utf-8")
+            res = open(rf'{path_outfiles}/text{i + 1}_{j + 1}.txt', "w", encoding="utf-8")
             res.write("\n<speak>\n")
             c = '\n'
             for k in range(850):
@@ -123,6 +123,7 @@ if __name__ == "__main__":
     size_f = size_file(out_text)   
     print(size_f)
     i_max = (int)(size_f / 2100)
+    if i_max == 0: i_max += 1 
     print("imax = ", i_max)
 
     text_prepare(out_text, outfiles, i_max)
@@ -142,26 +143,26 @@ if __name__ == "__main__":
     while i != i_max + 1:
         j = 1
         while j != 4:
-            path = rf"src\\gen_audio\\sounds\\{i}_{j}.wav"
+            path = rf"src/gen_audio/sounds/{i}_{j}.wav"
             print(rf"sounds/{i}_{j}")
-            TTS(rf'src\\gen_audio\\text\\text{i}_{j}.txt', model)
+            TTS(rf'src/gen_audio/text/text{i}_{j}.txt', model)
             j += 1                                
         i += 1
 
-    path_ = "src\\gen_audio\\sounds"
-    lst = [rf"{path_}\\1_2.wav", rf"{path_}\\1_3.wav"]
+    path_ = "src/gen_audio/sounds"
+    lst = [rf"{path_}/1_2.wav", rf"{path_}/1_3.wav"]
     i = 2
     while(i != i_max + 1):
         j = 1
         while(j != 4):
-            name = rf"{path_}\\{i}_{j}.wav"
+            name = rf"{path_}/{i}_{j}.wav"
             lst.append(name)
             j += 1
         i += 1    
     for audio in lst:
         print(audio)
 
-    merge_ = AudioSegment.from_file(rf"{path_}\\1_1.wav", format="wav")
+    merge_ = AudioSegment.from_file(rf"{path_}/1_1.wav", format="wav")
     for audio in lst:
         print(audio)
         sound = AudioSegment.from_file(audio, format="wav")
@@ -169,4 +170,4 @@ if __name__ == "__main__":
 
     out_audio = rf"output_audio"
     out_audio = os.path.abspath(out_audio)
-    merge_.export(rf"{out_audio}\\audio(from_{f}).mp3", format="mp3")
+    merge_.export(rf"{out_audio}/audio(from_{f}).mp3", format="mp3")

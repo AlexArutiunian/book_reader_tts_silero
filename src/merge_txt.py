@@ -1,15 +1,17 @@
+import os
 filenames = []
 i_max = 5
 i = j = 1
-input = 'gen_audio/text'
+input_text = r'src/gen_audio/text'
+input_text = os.path.abspath(input_text)
 while i != i_max + 1:
     j = 1
     while j != 4:
-        filenames.append(f'{input}/text{i}_{j}.txt')            
+        filenames.append(f'{input_text}/text{i}_{j}.txt')            
         j += 1
     i += 1
 
-output = "merge_20ch.txt"
+output = "src/merge_20ch.txt"
 with open(output, 'w', encoding="utf-8") as outfile:
     for fname in filenames:
         print(fname)
