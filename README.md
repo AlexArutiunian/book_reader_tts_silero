@@ -17,6 +17,15 @@ If that is not enough, you can see [my list of library](https://github.com/AlexA
 ```bash
 pip3 list
 ```
+### Some software wo work with merged_audio
+```bash
+pip3 install pydub
+```
+If you have this error in windows
+```bash
+RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+```
+then you can see this [tutorial](https://www.youtube.com/watch?v=PYeksH-n4fo&t=954s) and launch ffmpeg from [link](https://ffmpeg.org/download.html#build-windows)
 ## Correction of speech errors of the model
 
 In directory [book_reader/src/helpers](https://github.com/AlexArutiunian/book_reader/tree/main/src/helpers) you can find files 'word.txt' and 'word+.txt', with which you can place accents in words of your text.
